@@ -10,3 +10,11 @@ puts "Exercise 7"
 puts "----------"
 
 # Your code goes here ...
+puts "Type a store name: "
+store_name = gets.chomp
+
+begin
+  store = Store.create(name: "store_name " )
+rescue StandardError => e
+  print e
+end
