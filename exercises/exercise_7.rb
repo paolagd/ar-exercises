@@ -12,9 +12,12 @@ puts "----------"
 # Your code goes here ...
 puts "Type a store name: "
 store_name = gets.chomp
- 
-begin
-  store = Store.create(name: "store_name")
-rescue StandardError => e
-  print e
+
+begin 
+  @store = Store.create(name: store_name)  
+rescue ActiveRecord::RecordInvalid => invalid
+  puts invalid.record.errors
+rescue
+  puts @store.inspect
+  puts @store.errors.full_messages
 end
